@@ -211,7 +211,7 @@
         }
 
         .ramadan-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -228,6 +228,7 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            margin-bottom: 3rem;
         }
 
         .feature-item {
@@ -240,6 +241,123 @@
         .feature-item h4 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
+        }
+
+        /* Ramazan Paketleri Kartları */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .package-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .package-header {
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .package-card.large .package-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .package-card.medium .package-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .package-card.small .package-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .package-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .package-body {
+            padding: 2rem;
+            background: white;
+            color: #333;
+        }
+
+        .package-items {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .package-items li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .package-items li:last-child {
+            border-bottom: none;
+        }
+
+        .package-items li::before {
+            content: '✓';
+            color: #71b280;
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .package-footer {
+            padding: 1.5rem 2rem;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .order-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .order-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
         .contact-section {
@@ -292,6 +410,14 @@
             }
             
             .section-title {
+                font-size: 2rem;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .package-price {
                 font-size: 2rem;
             }
         }
@@ -486,11 +612,12 @@
     <section id="ramazan" class="section ramadan-section">
         <div class="container">
             <div class="ramadan-content">
-                <h2 class="section-title">Ramazan İaşe Paketleri</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                <h2 class="section-title">🌙 Ramazan İaşe Paketleri</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;">
                     Mübarek Ramazan aylarında ihtiyaç sahiplerine ulaştırmak üzere özel olarak hazırladığımız iaşe paketlerimizle 
                     yanınızdayız. 45 yılı aşkın tecrübemizle, hayırseverlerimiz için uygun fiyatlı ve kaliteli paketler sunuyoruz.
                 </p>
+                
                 <div class="features-grid">
                     <div class="feature-item">
                         <h4>✨ Kaliteli Ürünler</h4>
@@ -509,7 +636,103 @@
                         <p>Hayırseverler için özel fiyatlar</p>
                     </div>
                 </div>
-                <a href="#iletisim" class="cta-button" style="margin-top: 2rem;">Paket Bilgisi Al</a>
+
+                <!-- PAKET KARTLARI -->
+                <div class="packages-grid">
+                    <!-- BÜYÜK PAKET -->
+                    <div class="package-card large">
+                        <div class="package-header">
+                            <div class="package-icon">⭐</div>
+                            <div class="package-title">BÜYÜK PAKET</div>
+                            <div class="package-price">4.000₺</div>
+                        </div>
+                        <div class="package-body">
+                            <ul class="package-items">
+                                <li>5 kg Ayçiçek Yağı</li>
+                                <li>10 kg Un</li>
+                                <li>3 kg Pilavlık Pirinç</li>
+                                <li>3 kg Kırmızı Mercimek</li>
+                                <li>2 kg Nohut</li>
+                                <li>2 kg Kuru Fasulye</li>
+                                <li>1 kg Çaykur Çay</li>
+                                <li>2 Paket Kesme Şeker</li>
+                                <li>1 kg Beyaz Peynir</li>
+                                <li>1 kg Zeytin</li>
+                                <li>1 kg Tahin</li>
+                                <li>1 kg Helva</li>
+                                <li>600 gr Çikolata</li>
+                                <li>5 Paket Makarna</li>
+                                <li>2 kg Bulgur</li>
+                                <li>1 kg Salça</li>
+                            </ul>
+                        </div>
+                        <div class="package-footer">
+                            <a href="https://wa.me/905378777879?text=Merhaba, BÜYÜK PAKET hakkında bilgi almak istiyorum." class="order-button">WhatsApp ile Sipariş Ver</a>
+                        </div>
+                    </div>
+
+                    <!-- ORTA PAKET -->
+                    <div class="package-card medium">
+                        <div class="package-header">
+                            <div class="package-icon">🎀</div>
+                            <div class="package-title">ORTA PAKET</div>
+                            <div class="package-price">3.000₺</div>
+                        </div>
+                        <div class="package-body">
+                            <ul class="package-items">
+                                <li>5 kg Ayçiçek Yağı</li>
+                                <li>2 kg Pirinç</li>
+                                <li>2 kg Kırmızı Mercimek</li>
+                                <li>1 kg Nohut</li>
+                                <li>1 kg Kuru Fasulye</li>
+                                <li>2 kg Bulgur</li>
+                                <li>1 kg Beyaz Peynir</li>
+                                <li>1 kg Zeytin</li>
+                                <li>1 kg Helva</li>
+                                <li>2 Paket Kesme Şeker</li>
+                                <li>1 kg Çay</li>
+                                <li>5 Paket Makarna</li>
+                                <li>1 kg Salça</li>
+                            </ul>
+                        </div>
+                        <div class="package-footer">
+                            <a href="https://wa.me/905378777879?text=Merhaba, ORTA PAKET hakkında bilgi almak istiyorum." class="order-button">WhatsApp ile Sipariş Ver</a>
+                        </div>
+                    </div>
+
+                    <!-- KÜÇÜK PAKET -->
+                    <div class="package-card small">
+                        <div class="package-header">
+                            <div class="package-icon">🎁</div>
+                            <div class="package-title">KÜÇÜK PAKET</div>
+                            <div class="package-price">2.000₺</div>
+                        </div>
+                        <div class="package-body">
+                            <ul class="package-items">
+                                <li>2 kg Ayçiçek Yağı</li>
+                                <li>1 kg Pirinç</li>
+                                <li>1 kg Mercimek</li>
+                                <li>1 kg Nohut</li>
+                                <li>1 kg Kuru Fasulye</li>
+                                <li>1 kg Bulgur</li>
+                                <li>4 Paket Makarna</li>
+                                <li>500 gr Çay</li>
+                                <li>1 kg Zeytin</li>
+                                <li>1 kg Helva</li>
+                                <li>2 Paket Kesme Şeker</li>
+                                <li>1 kg Tahin</li>
+                                <li>2 kg Un</li>
+                            </ul>
+                        </div>
+                        <div class="package-footer">
+                            <a href="https://wa.me/905378777879?text=Merhaba, KÜÇÜK PAKET hakkında bilgi almak istiyorum." class="order-button">WhatsApp ile Sipariş Ver</a>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 3rem; font-size: 1.1rem; opacity: 0.9;">
+                    📞 Sipariş ve bilgi için: <strong>0537 877 78 79</strong>
+                </p>
             </div>
         </div>
     </section>
@@ -521,7 +744,7 @@
                 <div class="contact-card">
                     <i>📍</i>
                     <h3>Adres</h3>
-                    <p>Melikgazi, Kayseri<br>Türkiye</p>
+                    <p>Cumhuriyet Mahallesi<br>Şekerciler Caddesi No: 10/B<br>Melikgazi / Kayseri</p>
                 </div>
                 <div class="contact-card">
                     <i>📞</i>
