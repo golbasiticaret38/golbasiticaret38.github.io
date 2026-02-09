@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GÖLBAŞI TİCARET - Toptan & Perakende Gıda ve Temizlik Malzemeleri</title>
+    <title>GÖLBAŞI TİCARET - Toptan & Perakende Gıda</title>
     <style>
         * {
             margin: 0;
@@ -12,188 +11,868 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #1e3c72;
-            --secondary: #2a5298;
-            --accent: #ffd700;
-            --dark: #0f1f3d;
-            --light: #f5f7fa;
-            --gradient-1: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            --gradient-2: linear-gradient(135deg, #134e5e 0%, #71b280 100%);
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.2);
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            overflow-x: hidden;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* MOBİL ÖNCELİKLİ HEADER */
         .header {
-            background: var(--gradient-1);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 0.75rem 0;
+            padding: 1rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 1.5rem;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
         .nav-menu {
-            display: flex;
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: #1e3c72;
             list-style: none;
-            gap: 2rem;
+            padding: 1rem;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-menu li {
+            padding: 0.8rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-menu li:last-child {
+            border-bottom: none;
         }
 
         .nav-menu a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
+            font-size: 1.1rem;
+            display: block;
         }
 
+        /* MOBİL ÖNCELİKLİ HERO */
         .hero {
-            background: var(--gradient-1);
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.95), rgba(42, 82, 152, 0.95)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231e3c72" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            padding: 6rem 1.5rem 4rem;
+            margin-top: 60px;
+            padding: 2rem 1rem;
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .hero-content h1 {
+            font-size: 2rem;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .hero p {
-            font-size: 1.3rem;
+        .hero-content p {
+            font-size: 1.1rem;
             margin-bottom: 2rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            line-height: 1.5;
         }
 
         .cta-button {
-            background: var(--accent);
-            color: var(--primary);
+            background: #ffd700;
+            color: #1e3c72;
             padding: 1rem 2rem;
+            border: none;
             border-radius: 50px;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
             text-decoration: none;
+            display: inline-block;
+            width: 90%;
+            max-width: 300px;
         }
 
+        .cta-button:active {
+            transform: scale(0.95);
+        }
+
+        /* MOBİL ÖNCELİKLİ SECTION */
         .section {
-            padding: 5rem 1.5rem;
+            padding: 3rem 1rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #1e3c72;
+            position: relative;
+            padding: 0 1rem;
         }
 
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 3rem;
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #ffd700;
+            margin: 0.8rem auto;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 100%;
             margin: 0 auto;
+            padding: 0 0.5rem;
         }
 
+        /* MOBİL HİZMETLER */
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .service-card {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #2a5298;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card h3 {
+            color: #1e3c72;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* MOBİL ÜRÜNLER */
+        .products-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .products-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+        }
+
+        .product-info {
+            padding: 1.2rem;
+        }
+
+        .product-info h3 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+        }
+
+        /* MOBİL RAMAZAN BÖLÜMÜ */
+        .ramadan-section {
+            background: linear-gradient(135deg, #134e5e 0%, #71b280 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .ramadan-section .section-title {
+            color: white;
+        }
+
+        .ramadan-section .section-title::after {
+            background: #ffd700;
+        }
+
+        .ramadan-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            padding: 0 0.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.2rem 0.8rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item p {
+            font-size: 0.85rem;
+        }
+
+        /* MOBİL PAKETLER */
+        .packages-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .package-card {
+            background: white;
             border-radius: 20px;
-            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        }
+
+        .package-header {
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+
+        .package-card.large .package-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .package-card.medium .package-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .package-card.small .package-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .package-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .package-body {
+            padding: 1.5rem;
+            background: white;
+            color: #333;
+        }
+
+        .package-items {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .package-items li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .package-items li:last-child {
+            border-bottom: none;
+        }
+
+        .package-items li::before {
+            content: '✓';
+            color: #71b280;
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .package-footer {
+            padding: 1.2rem 1.5rem;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .order-button {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+        }
+
+        .order-button:active {
+            transform: scale(0.98);
+        }
+
+        /* MOBİL İLETİŞİM */
+        .contact-section {
+            background: #1e3c72;
+            color: white;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            color: #ffd700;
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* WHATSAPP BUTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
         }
 
         .footer {
-            background: var(--dark);
+            background: #0f1f3d;
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 2rem 1rem;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* TABLET VE MASAÜSTÜ İÇİN */
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .products-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .packages-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            .contact-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex !important;
+                position: static;
+                flex-direction: row;
+                gap: 2rem;
+                background: none;
+                box-shadow: none;
+                padding: 0;
+            }
+
+            .nav-menu li {
+                padding: 0;
+                border: none;
+            }
+
+            .nav-menu a {
+                font-size: 1rem;
+            }
+
+            .container {
+                max-width: 1200px;
+                padding: 0 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* DOKUNMATİK CIHAZLAR İÇİN */
+        @media (hover: none) {
+            .service-card:hover,
+            .product-card:hover,
+            .package-card:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
 <body>
-
-<header class="header">
-    <div class="nav-container">
-        <div class="logo">GÖLBAŞI TİCARET</div>
-        <ul class="nav-menu">
-            <li><a href="#anasayfa">Ana Sayfa</a></li>
-            <li><a href="#hizmetler">Hizmetlerimiz</a></li>
-            <li><a href="#urunler">Ürünler</a></li>
-            <li><a href="#ramazan">Ramazan Paketleri</a></li>
-            <li><a href="#iletisim">İletişim</a></li>
-        </ul>
-    </div>
-</header>
-
-<section id="anasayfa" class="hero">
-    <div>
-        <h1>GÖLBAŞI TİCARET</h1>
-        <p>Toptan ve Perakende Gıda & Temizlik Malzemeleri<br>Kalite ve Güvenin Adresi</p>
-        <div class="cta-buttons">
-            <a href="#ramazan" class="cta-button">Ramazan Paketleri</a>
-            <a href="#iletisim" class="cta-button">İletişime Geçin</a>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">GÖLBAŞI TİCARET</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#anasayfa" onclick="closeMenu()">Ana Sayfa</a></li>
+                    <li><a href="#hizmetler" onclick="closeMenu()">Hizmetlerimiz</a></li>
+                    <li><a href="#urunler" onclick="closeMenu()">Ürünler</a></li>
+                    <li><a href="#ramazan" onclick="closeMenu()">Ramazan Paketleri</a></li>
+                    <li><a href="#iletisim" onclick="closeMenu()">İletişim</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
-</section>
+    </header>
 
-<section id="hizmetler" class="section">
-    <div class="container">
-        <h2 class="section-title">Hizmetlerimiz</h2>
-        <p class="section-subtitle">Müşteri memnuniyeti odaklı hizmet</p>
-        <div class="services-grid">
-            <div class="service-card">Toptan Satış</div>
-            <div class="service-card">Perakende Satış</div>
-            <div class="service-card">Hızlı Teslimat</div>
-            <div class="service-card">Uygun Fiyat</div>
+    <section id="anasayfa" class="hero">
+        <div class="hero-content">
+            <h1>GÖLBAŞI TİCARET</h1>
+            <p>Toptan ve Perakende<br>Gıda & Temizlik Malzemeleri</p>
+            <a href="#ramazan" class="cta-button">Ramazan Paketlerimiz</a>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer class="footer">
-    <p>© 2025 GÖLBAŞI TİCARET</p>
-</footer>
+    <section id="hizmetler" class="section">
+        <div class="container">
+            <h2 class="section-title">Hizmetlerimiz</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏪</div>
+                    <h3>Toptan Satış</h3>
+                    <p>Geniş ürün yelpazemizle toptan satış hizmetleri. Rekabetçi fiyatlar ve kaliteli ürünler garantisi.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛒</div>
+                    <h3>Perakende Satış</h3>
+                    <p>Her türlü gıda ve temizlik malzemesi perakende satış noktamızda.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚚</div>
+                    <h3>Hızlı Teslimat</h3>
+                    <p>Kayseri genelinde ücretsiz teslimat imkanı.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Uygun Fiyat</h3>
+                    <p>Kaliteden ödün vermeden en uygun fiyatlar. Toplu alımlarda özel indirimler.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Kalite Garantisi</h3>
+                    <p>Tüm ürünlerimiz hijyen standartlarına uygun ve sertifikalıdır.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📞</div>
+                    <h3>Müşteri Desteği</h3>
+                    <p>7/24 müşteri hizmetlerimiz ile her zaman yanınızdayız.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="urunler" class="section products-section">
+        <div class="container">
+            <h2 class="section-title">Ürün Kategorilerimiz</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">🍞</div>
+                    <div class="product-info">
+                        <h3>Temel Gıda Ürünleri</h3>
+                        <p>Un, şeker, pirinç, makarna, bulgur ve daha fazlası.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">🧴</div>
+                    <div class="product-info">
+                        <h3>Temizlik Malzemeleri</h3>
+                        <p>Deterjan, yumuşatıcı, bulaşık deterjanı, yüzey temizleyiciler.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🥫</div>
+                    <div class="product-info">
+                        <h3>Konserve Ürünler</h3>
+                        <p>Uzun ömürlü gıda ürünleri, konserveler, reçeller.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">🌾</div>
+                    <div class="product-info">
+                        <h3>Bakliyat</h3>
+                        <p>Mercimek, nohut, fasulye ve tüm bakliyat çeşitleri.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🧼</div>
+                    <div class="product-info">
+                        <h3>Kişisel Bakım</h3>
+                        <p>Sabun, şampuan, diş macunu ve kişisel hijyen ürünleri.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">🌶️</div>
+                    <div class="product-info">
+                        <h3>Baharat</h3>
+                        <p>Taze baharatlar ve çeşniler.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ramazan" class="section ramadan-section">
+        <div class="container">
+            <h2 class="section-title">🌙 Ramazan İaşe Paketleri</h2>
+            <p>
+                Mübarek Ramazan aylarında ihtiyaç sahiplerine ulaştırmak üzere özel olarak hazırladığımız iaşe paketlerimizle yanınızdayız.
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>✨ Kaliteli Ürünler</h4>
+                    <p>Sertifikalı ürünler</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📦 Hazır Paketler</h4>
+                    <p>Hijyenik ambalaj</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🎁 Zengin İçerik</h4>
+                    <p>Gıda ve temizlik</p>
+                </div>
+                <div class="feature-item">
+                    <h4>💝 Uygun Fiyat</h4>
+                    <p>Özel fiyatlar</p>
+                </div>
+            </div>
+
+            <div class="packages-grid">
+                <!-- BÜYÜK PAKET -->
+                <div class="package-card large">
+                    <div class="package-header">
+                        <div class="package-icon">⭐</div>
+                        <div class="package-title">BÜYÜK PAKET</div>
+                        <div class="package-price">4.000₺</div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-items">
+                            <li>5 kg Ayçiçek Yağı</li>
+                            <li>10 kg Un</li>
+                            <li>3 kg Pilavlık Pirinç</li>
+                            <li>3 kg Kırmızı Mercimek</li>
+                            <li>2 kg Nohut</li>
+                            <li>2 kg Kuru Fasulye</li>
+                            <li>1 kg Çaykur Çay</li>
+                            <li>2 Paket Kesme Şeker</li>
+                            <li>1 kg Beyaz Peynir</li>
+                            <li>1 kg Zeytin</li>
+                            <li>1 kg Tahin</li>
+                            <li>1 kg Helva</li>
+                            <li>600 gr Çikolata</li>
+                            <li>5 Paket Makarna</li>
+                            <li>2 kg Bulgur</li>
+                            <li>1 kg Salça</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/905378777879?text=Merhaba,%20BÜYÜK%20PAKET%20hakkında%20bilgi%20almak%20istiyorum." class="order-button">💬 WhatsApp Sipariş</a>
+                    </div>
+                </div>
+
+                <!-- ORTA PAKET -->
+                <div class="package-card medium">
+                    <div class="package-header">
+                        <div class="package-icon">🎀</div>
+                        <div class="package-title">ORTA PAKET</div>
+                        <div class="package-price">3.000₺</div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-items">
+                            <li>5 kg Ayçiçek Yağı</li>
+                            <li>2 kg Pirinç</li>
+                            <li>2 kg Kırmızı Mercimek</li>
+                            <li>1 kg Nohut</li>
+                            <li>1 kg Kuru Fasulye</li>
+                            <li>2 kg Bulgur</li>
+                            <li>1 kg Beyaz Peynir</li>
+                            <li>1 kg Zeytin</li>
+                            <li>1 kg Helva</li>
+                            <li>2 Paket Kesme Şeker</li>
+                            <li>1 kg Çay</li>
+                            <li>5 Paket Makarna</li>
+                            <li>1 kg Salça</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/905378777879?text=Merhaba,%20ORTA%20PAKET%20hakkında%20bilgi%20almak%20istiyorum." class="order-button">💬 WhatsApp Sipariş</a>
+                    </div>
+                </div>
+
+                <!-- KÜÇÜK PAKET -->
+                <div class="package-card small">
+                    <div class="package-header">
+                        <div class="package-icon">🎁</div>
+                        <div class="package-title">KÜÇÜK PAKET</div>
+                        <div class="package-price">2.000₺</div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-items">
+                            <li>2 kg Ayçiçek Yağı</li>
+                            <li>1 kg Pirinç</li>
+                            <li>1 kg Mercimek</li>
+                            <li>1 kg Nohut</li>
+                            <li>1 kg Kuru Fasulye</li>
+                            <li>1 kg Bulgur</li>
+                            <li>4 Paket Makarna</li>
+                            <li>500 gr Çay</li>
+                            <li>1 kg Zeytin</li>
+                            <li>1 kg Helva</li>
+                            <li>2 Paket Kesme Şeker</li>
+                            <li>1 kg Tahin</li>
+                            <li>2 kg Un</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="https://wa.me/905378777879?text=Merhaba,%20KÜÇÜK%20PAKET%20hakkında%20bilgi%20almak%20istiyorum." class="order-button">💬 WhatsApp Sipariş</a>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem; font-size: 1rem;">
+                📞 <strong>0537 877 78 79</strong>
+            </p>
+        </div>
+    </section>
+
+    <section id="iletisim" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">İletişim</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i>📍</i>
+                    <h3>Adres</h3>
+                    <p>Cumhuriyet Mahallesi<br>Şekerciler Caddesi No: 10/B<br>Melikgazi / Kayseri</p>
+                </div>
+                <div class="contact-card">
+                    <i>📞</i>
+                    <h3>Telefon</h3>
+                    <p><a href="tel:+905378777879" style="color: #ffd700; text-decoration: none; font-size: 1.2rem;">0537 877 78 79</a></p>
+                </div>
+                <div class="contact-card">
+                    <i>⏰</i>
+                    <h3>Çalışma Saatleri</h3>
+                    <p>Pazartesi - Cumartesi<br>08:00 - 20:00</p>
+                </div>
+                <div class="contact-card">
+                    <i>💬</i>
+                    <h3>WhatsApp</h3>
+                    <p><a href="https://wa.me/905378777879" style="color: #ffd700; text-decoration: none;">Hemen Mesaj Gönderin</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHATSAPP YÜZEN BUTON -->
+    <a href="https://wa.me/905378777879" class="whatsapp-float" aria-label="WhatsApp">
+        💬
+    </a>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 GÖLBAŞI TİCARET</p>
+            <p>Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Menü dışına tıklandığında kapat
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (navMenu.classList.contains('active') && 
+                !navMenu.contains(event.target) && 
+                !menuToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
