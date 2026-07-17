@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://golbasiticaret38.github.io/sitemap.xml
